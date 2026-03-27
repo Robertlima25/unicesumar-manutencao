@@ -116,7 +116,7 @@ Cada integrante do grupo deve possuir pelo menos um commit relevante relacionado
 Deve ser gravado um vídeo da equipe para esta atividade.
 
 1. Cada integrante deve explicar pelo menos uma manutenção realizada na atividade.
-2. A explicação deve descrever o que foi feito e por quê.
+2. A explicação deve descrever o que foi feito e porque.
 3. O vídeo deve mostrar o código correspondente à manutenção explicada.
 4. O vídeo deve incluir a execução do código para demonstrar o funcionamento.
 

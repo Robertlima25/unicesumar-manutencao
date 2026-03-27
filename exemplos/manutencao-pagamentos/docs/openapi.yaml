@@ -1,0 +1,94 @@
+openapi: 3.0.3
+info:
+  title: API de Pagamentos - Exemplo Didatico
+  version: 1.1.0
+  description: |
+    API REST de exemplo para demonstrar documentacao de endpoints
+    em um cenario de manutencao de software.
+servers:
+  - url: http://localhost:8080
+paths:
+  /v1/vendas/finalizar:
+    post:
+      summary: Finaliza venda com suporte a moedas
+      operationId: finalizarVendaV1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinalizarVendaRequest'
+      responses:
+        '200':
+          description: Venda processada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinalizarVendaResponse'
+        '400':
+          description: Dados invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErroResponse'
+  /v1/vendas/finalizar-legado:
+    post:
+      summary: Finaliza venda no formato legado (depreciado)
+      description: Endpoint mantido para compatibilidade temporaria.
+      deprecated: true
+      operationId: finalizarVendaLegadoV1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - valor
+              properties:
+                valor:
+                  type: number
+                  format: double
+                  minimum: 1
+      responses:
+        '200':
+          description: Venda processada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinalizarVendaResponse'
+        '400':
+          description: Dados invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErroResponse'
+components:
+  schemas:
+    FinalizarVendaRequest:
+      type: object
+      required:
+        - valor
+        - moeda
+      properties:
+        valor:
+          type: number
+          format: double
+          minimum: 1
+        moeda:
+          type: string
+          enum: [BRL, USD, EUR]
+    FinalizarVendaResponse:
+      type: object
+      properties:
+        aprovado:
+          type: boolean
+        mensagem:
+          type: string
+    ErroResponse:
+      type: object
+      properties:
+        codigo:
+          type: string
+        mensagem:
+          type: string
