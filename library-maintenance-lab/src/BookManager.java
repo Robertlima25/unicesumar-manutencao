@@ -4,6 +4,8 @@ import java.util.Map;
 
 public class BookManager {
 
+    //EXEMPLO COMMIT
+
     // MAINTENANCE NOTE:
     // This method mixes validation, defaults, persistence and logging.
     // Consider splitting it into smaller methods.
