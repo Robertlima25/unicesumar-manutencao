@@ -5,6 +5,12 @@ import java.util.Map;
 public class BookManager {
 
     //EXEMPLO COMMIT
+    //Problemas de Manutenibilidade
+    //1. Método muito grande e com múltiplas responsabilidades
+
+//Onde: registerBook
+//Problema: validação + regra de negócio + persistência + log
+//Classificação: God Method / Violação do Single Responsibility Principle (SRP)
 
     // MAINTENANCE NOTE:
     // This method mixes validation, defaults, persistence and logging.
