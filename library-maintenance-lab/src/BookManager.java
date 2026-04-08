@@ -6,17 +6,21 @@ public class BookManager {
 
     //EXEMPLO COMMIT
     //Problemas de Manutenibilidade
-    //1. Método muito grande e com múltiplas responsabilidades
+//1. Método muito grande e com múltiplas responsabilidades
 
 //Onde: registerBook
 //Problema: validação + regra de negócio + persistência + log
 //Classificação: God Method / Violação do Single Responsibility Principle (SRP)
+
+//------------------------
 
 // 2. Tratamento de erro genérico
 
 //Onde: catch (Exception e)
 //Problema: perde informação do erro original
 //Classificação: Tratamento inadequado de exceções
+
+//------------------------
 
 // 3. Uso de valores mágicos (magic numbers/strings)
 // //Exemplos:
@@ -25,6 +29,8 @@ public class BookManager {
 //1900, 1, 9
 //Classificação: Magic Numbers / Magic Strings
 
+//------------------------
+
 // 4. Código legado com workaround perigoso
 
 //Onde:
@@ -32,11 +38,15 @@ public class BookManager {
 //Problema: permite dado inválido
 //Classificação: Technical Debt / Código legado
 
+//------------------------
+
 //5. Duplicação de lógica
 
 //Onde: listBooksSimple
 //Comentário já indica duplicação
 //Classificação: Code Duplication
+
+//------------------------
 
 //6. Bug de edge case
 
@@ -46,12 +56,16 @@ public class BookManager {
 }//Problema: acesso inválido
 //Classificação: Bug / Falta de validação
 
+//------------------------
+
 //7. Uso excessivo de Map ao invés de objetos
 //Problema:
 
 //difícil manutenção
 //sem tipagem forte
 //Classificação: Primitive Obsession / Falta de modelagem OO
+
+//------------------------
 
 //8. Método com parâmetros excessivos
 //Onde:
@@ -60,16 +74,22 @@ public class BookManager {
 //Problema: difícil leitura e manutenção
 //Classificação: Long Parameter List
 
+//------------------------
+
 //9. Lógica complexa com if/else encadeado
 
 //Onde: opCode
 //Classificação: Complex Conditional / Falta de polimorfismo
+
+//------------------------
 
 //10. Falta de separação de camadas
 //Problema:
 
 //mistura console + regra de negócio
 //Classificação: Violação de arquitetura (Separation of Concerns)
+
+//------------------------
 
 //Código Refatorado
 //public class BookManager {
