@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.crypto.spec.HKDFParameterSpec.Extract;
+
 public class BookManager {
 
     //EXEMPLO COMMIT
@@ -260,6 +262,61 @@ public class BookManager {
 
 //----------------------------------
 
+//1. Separação de responsabilidades
+//refactor: split registerBook into smaller methods
+//- Extract validation logic
+//- Extract normalization methods
+//- Extract persistence and logging
+//- Improve readability and maintainability
+
+// 2. Remoção de números mágicos
+//refactor: replace magic numbers and strings with constants
+//- Add DEFAULT_CATEGORY, DEFAULT_YEAR, DEFAULT_SHELF, DEFAULT_ISBN
+//- Improve code readability
+
+//3. Melhoria na validação
+//fix: improve validation rules for book registration
+//- Validate author explicitly
+//- Keep legacy behavior for title to avoid breaking system
+
+//4. Tratamento de exceções
+//refactor: improve exception handling in registerBook
+//- Preserve original exception cause
+//- Improve error logging
+
+//5. Correção de bug na listagem
+//fix: handle empty book list to prevent IndexOutOfBoundsException
+//- Replace invalid access temp.get(0)
+//- Add safe empty list handling
+
+//6. Remoção de duplicação
+//refactor: extract methods for printing book list
+//- Create printHeader()
+//- Create printBook()
+//- Remove duplicated logic
+
+//7. Simplificação de lógica condicional
+//refactor: simplify updateAvailableWithLegacyRule logic
+//- Replace if-else chain with switch
+//- Extract calculation method
+
+//8. Introdução de método utilitário (clamp)
+//refactor: add clamp utility method for value normalization
+//- Ensure values stay within valid bounds
+//- Reduce duplicated validation logic
+
+//9. Redução de complexidade
+//refactor: extract helper methods in updateAvailableWithLegacyRule
+//- Extract getBookOrThrow
+//- Extract logUpdate
+//- Improve readability
+
+//10. Melhoria de legibilidade
+//refactor: improve variable naming and code clarity
+//- Replace generic names (x, y, z)
+//- Improve method and variable readability
+
+//--------------------------------------------------
 
     // MAINTENANCE NOTE:
     // This method mixes validation, defaults, persistence and logging.
