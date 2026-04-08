@@ -251,14 +251,14 @@ public class BookManager {
 //}
 
 //Refatorações aplicadas
-//✔ Extração de métodos
-//✔ Remoção de duplicação
-//✔ Substituição de números mágicos por constantes
-//✔ Simplificação de condicionais (switch + clamp)
-//✔ Melhor tratamento de exceções
-//✔ Redução de complexidade
-//✔ Melhoria de nomes
-//✔ Separação de responsabilidades
+// - Extração de métodos
+// - Remoção de duplicação
+// - Substituição de números mágicos por constantes
+// - Simplificação de condicionais (switch + clamp)
+// - Melhor tratamento de exceções
+// - Redução de complexidade
+// - Melhoria de nomes
+// - Separação de responsabilidades
 
 //----------------------------------
 
