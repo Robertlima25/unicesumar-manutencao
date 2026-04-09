@@ -55,7 +55,8 @@ public class BookManager {
 //Onde:
 //if (temp.size() == 0) {
     //System.out.println(temp.get(0));
-}//Problema: acesso inválido
+//}
+//Problema: acesso inválido
 //Classificação: Bug / Falta de validação
 
 //------------------------
@@ -480,3 +481,4 @@ public class BookManager {
         System.out.println("Book saved with id " + id);
     }
 }
+

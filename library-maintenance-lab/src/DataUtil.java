@@ -2,6 +2,33 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+ // DOCUMENTAÇÃO DE IMPACTO E MUDANÇAS:
+
+  // 1. CORREÇÃO DE BUGS:
+ // - Bug 1 (toInt/toDouble): Valores nulos causavam exceções não tratadas explicitamente.Agora retornam o valor de erro padrão com segurança. 
+ 
+ // - Bug 2 (leftPad/rightPad): Strings originais maiores que o 'size' entravam em loops 
+
+ // 3. MANUAL DE TESTES:
+ // - Bug Data: Chamar DataUtil.datePlusDaysApprox("2026-04-09", 7). 
+ // Antes: "2026-04-09 +7" | Agora: "2026-04-16".
+
+ // - Bug Pad: Chamar DataUtil.leftPad("Java", 2). 
+ // Antes: Loop/Nenhum efeito | Agora: Retorna "Java" (mantém integridade se maior que o pad).
+
+ // NOVA FUNCIONALIDADE: Validação de e-mail para melhorar o fluxo de cadastro de usuários
+    // Impacto controlado: Melhora a integridade dos dados sem quebrar o código antigo.
+    /*
+    public static boolean isValidEmail(String email) {
+        if (isBlank(email)) return false;
+        // Verifica se tem @, se tem ponto e se o ponto vem depois do @
+        return email.contains("@") && 
+               email.contains(".") && 
+               email.indexOf("@") < email.lastIndexOf(".");
+    }
+    */
+
+
 public class DataUtil {
 
     public static Scanner scanner = new Scanner(System.in);
