@@ -4,7 +4,7 @@ import java.util.Map;
 
 import javax.crypto.spec.HKDFParameterSpec.Extract;
 
-public class BookManager {
+//public class BookManager {
 
     //EXEMPLO COMMIT
     //Problemas de Manutenibilidade
@@ -95,161 +95,161 @@ public class BookManager {
 //------------------------
 
 //Código Refatorado
-//public class BookManager {
+public class BookManager {
 
-    //private static final String DEFAULT_CATEGORY = "GENERAL";
-    //private static final String DEFAULT_SHELF = "X0";
-    //private static final String DEFAULT_ISBN = "NO-ISBN";
-    //private static final int DEFAULT_YEAR = 1900;
+    private static final String DEFAULT_CATEGORY = "GENERAL";
+    private static final String DEFAULT_SHELF = "X0";
+    private static final String DEFAULT_ISBN = "NO-ISBN";
+    private static final int DEFAULT_YEAR = 1900;
 
-    //public int registerBook(String title, String author, int year, String category,
-                            //int totalCopies, int availableCopies,
-                            //String shelfCode, String isbn) {
+    public int registerBook(String title, String author, int year, String category,
+                            int totalCopies, int availableCopies,
+                            String shelfCode, String isbn) {
 
-        //validateAuthor(author);
+        validateAuthor(author);
 
-        //title = defaultIfBlank(title, " ");
-        //category = defaultIfBlank(category, DEFAULT_CATEGORY);
-        //shelfCode = defaultIfBlank(shelfCode, DEFAULT_SHELF);
-        //isbn = defaultIfBlank(isbn, DEFAULT_ISBN);
+        title = defaultIfBlank(title, " ");
+        category = defaultIfBlank(category, DEFAULT_CATEGORY);
+        shelfCode = defaultIfBlank(shelfCode, DEFAULT_SHELF);
+        isbn = defaultIfBlank(isbn, DEFAULT_ISBN);
 
-        //year = normalizeYear(year);
-        //totalCopies = normalizeTotalCopies(totalCopies);
-        //availableCopies = normalizeAvailableCopies(availableCopies, totalCopies);
+        year = normalizeYear(year);
+        totalCopies = normalizeTotalCopies(totalCopies);
+        availableCopies = normalizeAvailableCopies(availableCopies, totalCopies);
 
-        //try {
-            //int result = saveBook(title, author, year, category,
-                                 //totalCopies, availableCopies,
-                                 //shelfCode, isbn);
+        try {
+            int result = saveBook(title, author, year, category,
+                                 totalCopies, availableCopies,
+                                 shelfCode, isbn);
 
-            //logSuccess(result);
-            //return result;
+            logSuccess(result);
+            return result;
 
-        //} catch (Exception e) {
-            //logError(e);
-            //throw new RuntimeException("Cannot register book", e);
-        //}
-    //}
+        } catch (Exception e) {
+            logError(e);
+            throw new RuntimeException("Cannot register book", e);
+        }
+    }
 
-    //private void validateAuthor(String author) {
-        //if (DataUtil.isBlank(author)) {
-            //throw new RuntimeException("author invalid");
-        //}
-    //}
+    private void validateAuthor(String author) {
+        if (DataUtil.isBlank(author)) {
+            throw new RuntimeException("author invalid");
+        }
+    }
 
-    //private String defaultIfBlank(String value, String defaultValue) {
-        //return DataUtil.isBlank(value) ? defaultValue : value;
-    //}
+    private String defaultIfBlank(String value, String defaultValue) {
+        return DataUtil.isBlank(value) ? defaultValue : value;
+    }
 
-    //private int normalizeYear(int year) {
-        //return year < 0 ? DEFAULT_YEAR : year;
-    //}
+    private int normalizeYear(int year) {
+        return year < 0 ? DEFAULT_YEAR : year;
+    }
 
-    //private int normalizeTotalCopies(int totalCopies) {
-        //return totalCopies <= 0 ? 1 : totalCopies;
-    //}
+    private int normalizeTotalCopies(int totalCopies) {
+        return totalCopies <= 0 ? 1 : totalCopies;
+    }
 
-    //private int normalizeAvailableCopies(int available, int total) {
-        //return available < 0 ? total : available;
-    //}
+    private int normalizeAvailableCopies(int available, int total) {
+        return available < 0 ? total : available;
+    }
 
-    //private int saveBook(String title, String author, int year, String category,
-                         //int totalCopies, int availableCopies,
-                         //String shelfCode, String isbn) {
+    private int saveBook(String title, String author, int year, String category,
+                         int totalCopies, int availableCopies,
+                         String shelfCode, String isbn) {
 
-        //return LegacyDatabase.addBookData(
-                //title, author, year, category,
-                //totalCopies, availableCopies,
-                //shelfCode, isbn
-        //);
-    //}
+        return LegacyDatabase.addBookData(
+                title, author, year, category,
+                totalCopies, availableCopies,
+                shelfCode, isbn
+        );
+    }
 
-    //private void logSuccess(int result) {
-        //LegacyDatabase.addLog("book-manager-register-" + result);
-    //}
+    private void logSuccess(int result) {
+        LegacyDatabase.addLog("book-manager-register-" + result);
+    }
 
-    //private void logError(Exception e) {
-        //LegacyDatabase.addLog("book-manager-error-" + e.getMessage());
-    //}
-
-    // -------------------------
-
-    //public void listBooksSimple() {
-        //List<Map<String, Object>> books = new ArrayList<>(LegacyDatabase.getBooks().values());
-
-        //if (books.isEmpty()) {
-            //System.out.println("No books found.");
-            //return;
-        //}
-
-        //printHeader();
-        //for (Map<String, Object> b : books) {
-            //printBook(b);
-        //}
-    //}
-
-    //private void printHeader() {
-        //System.out.println("ID | TITLE | AUTHOR | Y | CAT | AV");
-    //}
-
-    //private void printBook(Map<String, Object> b) {
-        //System.out.println(
-                //b.get("id") + " | " +
-                //b.get("title") + " | " +
-                //b.get("author") + " | " +
-                //b.get("year") + " | " +
-                //b.get("category") + " | " +
-                //b.get("availableCopies")
-        //);
-    //}
+    private void logError(Exception e) {
+        LegacyDatabase.addLog("book-manager-error-" + e.getMessage());
+    }
 
     // -------------------------
 
-    //public void updateAvailableWithLegacyRule(int id, int newAvailable, int opCode,
-                                              //String process, String manager,
-                                              //int flag, String reason) {
+    public void listBooksSimple() {
+        List<Map<String, Object>> books = new ArrayList<>(LegacyDatabase.getBooks().values());
 
-        //Map<String, Object> data = getBookOrThrow(id);
+        if (books.isEmpty()) {
+            System.out.println("No books found.");
+            return;
+        }
 
-        //int total = (Integer) data.get("totalCopies");
-        //newAvailable = clamp(newAvailable, 0, total);
+        printHeader();
+        for (Map<String, Object> b : books) {
+            printBook(b);
+        }
+    }
 
-        //int updatedValue = calculateNewAvailable(data, newAvailable, opCode, total);
+    private void printHeader() {
+        System.out.println("ID | TITLE | AUTHOR | Y | CAT | AV");
+    }
 
-        //data.put("availableCopies", updatedValue);
+    private void printBook(Map<String, Object> b) {
+        System.out.println(
+                b.get("id") + " | " +
+                b.get("title") + " | " +
+                b.get("author") + " | " +
+                b.get("year") + " | " +
+                b.get("category") + " | " +
+                b.get("availableCopies")
+        );
+    }
 
-        //logUpdate(flag, process, manager, id, reason);
-    //}
+    // -------------------------
 
-    //private Map<String, Object> getBookOrThrow(int id) {
-        //Map<String, Object> data = LegacyDatabase.getBookById(id);
-        //if (data == null) {
-            //throw new RuntimeException("book not found");
-        //}
-        //return data;
-    //}
+    public void updateAvailableWithLegacyRule(int id, int newAvailable, int opCode,
+                                              String process, String manager,
+                                              int flag, String reason) {
 
-    //private int clamp(int value, int min, int max) {
-        //return Math.max(min, Math.min(max, value));
-    //}
+        Map<String, Object> data = getBookOrThrow(id);
 
-    //private int calculateNewAvailable(Map<String, Object> data, int value, int opCode, int total) {
-        //int old = (Integer) data.get("availableCopies");
+        int total = (Integer) data.get("totalCopies");
+        newAvailable = clamp(newAvailable, 0, total);
 
-        //switch (opCode) {
-            //case 1: return value;
-            //case 2: return clamp(old + value, 0, total);
-            //case 3: return clamp(old - value, 0, total);
-            //default: return value;
-        //}
-    //}
+        int updatedValue = calculateNewAvailable(data, newAvailable, opCode, total);
 
-    //private void logUpdate(int flag, String process, String manager, int id, String reason) {
-        //String logType = (flag == 9) ? "book-flag-9-" : "book-flag-other-";
-        //LegacyDatabase.addLog(logType + process + "-" + manager);
-        //LegacyDatabase.addLog("book-update-av-" + id + "-" + reason);
-    //}
-//}
+        data.put("availableCopies", updatedValue);
+
+        logUpdate(flag, process, manager, id, reason);
+    }
+
+    private Map<String, Object> getBookOrThrow(int id) {
+        Map<String, Object> data = LegacyDatabase.getBookById(id);
+        if (data == null) {
+            throw new RuntimeException("book not found");
+        }
+        return data;
+    }
+
+    private int clamp(int value, int min, int max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    private int calculateNewAvailable(Map<String, Object> data, int value, int opCode, int total) {
+        int old = (Integer) data.get("availableCopies");
+
+        switch (opCode) {
+            case 1: return value;
+            case 2: return clamp(old + value, 0, total);
+            case 3: return clamp(old - value, 0, total);
+            default: return value;
+        }
+    }
+
+    private void logUpdate(int flag, String process, String manager, int id, String reason) {
+        String logType = (flag == 9) ? "book-flag-9-" : "book-flag-other-";
+        LegacyDatabase.addLog(logType + process + "-" + manager);
+        LegacyDatabase.addLog("book-update-av-" + id + "-" + reason);
+    }
+}
 
 //Refatorações aplicadas
 // - Extração de métodos
@@ -322,7 +322,7 @@ public class BookManager {
     // MAINTENANCE NOTE:
     // This method mixes validation, defaults, persistence and logging.
     // Consider splitting it into smaller methods.
-    public int registerBook(String title, String author, int year, String category, int totalCopies, int availableCopies,
+    /*public int registerBook(String title, String author, int year, String category, int totalCopies, int availableCopies,
             String shelfCode, String isbn) {
         int result = -1;
         try {
@@ -481,4 +481,7 @@ public class BookManager {
         System.out.println("Book saved with id " + id);
     }
 }
+    Deixei marcado esse campo pois trat-se do código original e deixei desmarcado o código refatorado
+    
+    */
 
